@@ -1,0 +1,86 @@
+
+body {
+  font-family: sans-serif;
+  margin: 100px auto;
+  padding: 10px;
+  background-color: #000;
+  max-width: 800px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+.card {
+  margin: 0 auto;
+  width: 500px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.card-header {
+  text-align: center;
+  font-size: 24px;
+  background-color: #ccc;
+}
+
+.card-body {
+  padding: 50px;
+}
+
+.card-footer {
+  text-align: center;
+  padding: 20px;
+}
+
+.result {
+  display: none;
+}
+
+.result h2 {
+  margin-top: 0;
+}
+
+.result img {
+  display: block;
+  margin: 0 auto;
+  max-width: 300px;
+}
+
+.card-footer img {
+  width: 100px;
+}
+
+.upload input[type="submit"],
+.upload-btn-wrapper .btn {
+  background-color: blue;
+  color: white;
+  display: block;
+  margin: auto;
+  border-radius: 10px;
+  font-size: 19px;
+  margin-bottom: 20px;
+}
+
+.upload-btn-wrapper .btn {
+  border: none;
+  padding: 8px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 10px;
+  background: #008CBA;
+  color: white;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}

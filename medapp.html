@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virohana</title>
+    <style>
+        /* Set the background image and opacity for the container */
+        
+        /* Add your other styles here */
+        .full-screen-container {
+            width: 100vw; /* 100% of the viewport width */
+            height: 100vh; /* 100% of the viewport height */
+            background-image: url('C:\Users\Reshmi\Desktop\final_app\app\static\images\Spa.jpg'); /* Background color for the container */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body {
+            background-image: url('C:\Users\Reshmi\Desktop\final_app\app\static\images\Spa.jpg'); /*Replace with your image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Optional: Fixed background */
+           
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #628B48;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+            cursor: pointer
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6ab547;
+            color: #F3F9E3;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin: 50;
+            margin-left: 600px;
+        }
+
+        .button:hover {
+            background-color: #6ab547;
+        }
+
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+        }
+
+        .element1 {
+            margin-bottom: 80px;
+        }
+
+        .element2 {
+            margin-top: 80px;
+        }
+        .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30;
+  position: fixed;
+  top: 30px;
+  width: 50%;
+  height: 100vh;
+  margin-left: 400px;
+}
+    </style>
+</head>
+<body>
+    <!-- Container with background image and opacity -->
+            <header>
+       
+                <nav>
+                    
+                    <a href="/">Home</a>
+                    <a href="/">About</a>
+                    <a href="/forum">Forum</a>
+                    <a href="/profiles">Find Care</a>
+                </nav>
+
+                
+        
+               <!-- <div class="body">*/
+                    <img src="C:\Users\Reshmi\Desktop\final_app\app\templates\Spa.jpg" alt="Example Image">*/
+                </div>*/-->
+        
+                <div class="center-container">
+                    
+                    <img src="derma.jpg" alt="Girl in a jacket" width="300" height="300">
+                </div>
+        
+                <div class="element1"></div>
+                <div class="element2"></div>
+        
+                <!-- "Click Here" Button -->
+                <div class="button-container">
+                    <a href="/index" class="button">Let's diagnose!</a>
+                </div>
+        
+                <div class="button-container">
+                    <a href="/base" class="button">Chatbot</a>
+                </div>
+            </header>
+        
+        
+            <div class="result" style="display:none;">
+                <img id="uploaded_image" style="max-width: 300px;">
+            </div>
+        
+            <!-- Your other content goes here -->
+        
+            <script>
+                function validateForm() {
+                    const imageInput = document.querySelector('input[type="file"]');
+                    if (!imageInput.files.length) {
+                        alert('Please select an image file to upload.');
+                        return false;
+                    }
+                    return true;
+                }
+        
+                document.querySelector('form').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const formData = new FormData();
+                    formData.append('image', document.querySelector('input[type="file"]').files[0]);
+        
+                    const response = await fetch('/predict', {
+                        method: 'POST',
+                        body: formData
+                    });
+        
+                    const result = await response.json();
+        
+                    document.getElementById('predicted_class').textContent = result.predicted_class;
+                    document.getElementById('confidence').textContent = result.confidence;
+        
+                    const uploadedImage = document.getElementById('uploaded_image');
+                    uploadedImage.src = URL.createObjectURL(formData.get('image'));
+        
+                    document.querySelector('.result').style.display = 'block';
+                });
+            </script>
+    </div>
+    
+</body>
+</html>
